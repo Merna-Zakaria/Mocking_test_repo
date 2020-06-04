@@ -1,7 +1,8 @@
 import * as app from '../App';
 import * as math from '../components/math.js/Math';
-// import axios from 'axios';
-import axios from '../models/__mocks__/axios';
+import * as fetchData from '../components/fetchData/FetchData';
+import axios from 'axios';
+// import axios from '../models/__mocks__/axios';
 
 
 // set all module functions to jest.fn
@@ -47,4 +48,8 @@ describe('fetchData', () => {
       Promise.reject(new Error(errorMessage)),
     );
   });
+
+  test("calls api", () => {
+    expect(axios.get).toHaveBeenCalledWith(`${fetchData.API}/users`)
+  }); 
 });
